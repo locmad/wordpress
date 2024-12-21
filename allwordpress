@@ -1,0 +1,21 @@
+Bước 1: Cài đặt xampp
+Bước 2: khởi động xampp
+ Nếu lỗi xampp thì làm theo bước sau:
+   - vào thư mục C:\xampp\mysql
+   - thay đổi thư mục data thành old-data. rồi tạo ra folder data mới
+   - sao chép nội dung trong thư mục backup vào data mới vừa tạo
+   - mở thư mục old-data rồi sao chép database, test, và file ibdata1 vào thư mục data mới vừa tạo
+   - khởi động lại xampp
+Bước 3: nếu muốn thay đổi domain ảo thì làm như sau
+    - vào file host theo đường dẫn  C:\Windows\System32\drivers\etc rồi sau đó thêm địa chỉ: 127.10.1.1 thietkewebtrongoi.com trong đó IP 127.10.1.1, mỗi 1 tên miền ảo bạn hãy tăng lên 1 cho đến 255 nhé, không được vượt qua số 255.
+    - vào file httpd-vhosts.conf theo đường dẫn C:\xampp\apache\conf\extra rồi thêm cấu hình sau: 
+      <VirtualHost 127.10.1.1>
+          DocumentRoot "C:\xampp\htdocs\wordpress_web"
+          ServerName wp.thietkewebtrongoi.com
+          ServerAlias wp.thietkewebtrongoi.com
+          <Directory "C:\xampp\htdocs\wordpress_web">
+              AllowOverride All
+              Require all granted
+          </Directory>
+        </VirtualHost>
+
